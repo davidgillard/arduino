@@ -1,0 +1,40 @@
+// Initialisation des differentes variables:
+
+
+int LED_Rouge = 2; // initialisation de la variable LED_Rouge
+int LED_Orange = 3; // initialisation de la variable LED_Orange
+int LED_Verte = 4; //initialisation de la variable LED_Verte
+
+
+void setup() {
+
+pinMode (LED_Rouge,OUTPUT); // indique que la broche de la LED_Rouge est une sortie
+
+pinMode (LED_Orange,OUTPUT); // indique que la broche de la LED_Orange est une sortie
+
+pinMode (LED_Verte,OUTPUT); // indique que la broche de la LED_Verte est une sortie
+
+}
+
+// Traitement en boucle
+
+void loop() {
+
+digitalWrite (LED_Verte,HIGH); // La led verte s'allume 
+
+delay (3000); // pendant 3 secondes
+
+digitalWrite(LED_Verte, LOW); // La led verte s'éteind
+
+digitalWrite (LED_Orange, HIGH);// La led orange s'allume
+
+delay (1000); // pendant 1 seconde:
+
+digitalWrite(LED_Orange, LOW); // La led orange s'éteind
+
+digitalWrite (LED_Rouge, HIGH);// La led rouge:
+
+delay (3000); // pendant 3 secondes:
+
+digitalWrite(LED_Rouge, LOW); // La led rouge s'éteind
+}

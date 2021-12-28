@@ -1,0 +1,127 @@
+/*
+# fichier : fun-mooc-arduino-tp2
+# auteur : David GILLARD
+# github: https://github.com/davidgillard
+
+###################################################################################################################################
+##                                                                                                                               ##
+##                                                 Consignes du TP                                                               ##
+##                                                                                                                               ##
+###################################################################################################################################
+
+Fonctionnement normal :
+
+Feu tricolore : même consigne que la semaine dernière
+- Une LED verte (branchée sur la broche 10) allumée pendant 3 secondes (c'est la première LED à s'allumer)
+- Puis une LED orange (branchée sur la broche 11) allumée pendant 1 seconde
+- Enfin, une LED rouge (branchée sur la broche 12) allumée pendant 3 secondes
+
+Feu bicolore (piéton)
+- Le feu piéton est constamment rouge (rouge→broche 9 et vert→ broche 8) tant que le BoutonPoussoir (broche 2) n'est pas appuyé
+
+Si le BoutonPoussoir est maintenu appuyé pendant que le feu voiture est au vert, alors le feu tricolore passe au orange allumé 
+pendant 1 seconde puis rouge pendant 5 secondes durant lesquelles le feu vert piéton passe au vert.
+
+Attention, laissez bien votre doigt appuyé suffisamment longtemps sur le Bouton Poussoir pour que le feu piéton passe au vert.
+
+Après ces 5 secondes, le feu piéton repasse au rouge et le fonctionnement normal reprend (à partir du vert pour le feu tricolore)
+
+Comme on est sympas, on vous donne le montage à réaliser au-dessus.
+
+Seules les notions abordées dans les cours de cette semaine et des semaines passées sont nécessaires pour réaliser ce TP (n'allez pas chercher l'impossible)
+
+On espère que les consignes sont claires, si ce n'était pas le cas merci de nous le faire savoir dans les discussions ci-dessous.
+
+Vous devez mettre un commentaire sur le code que vous allez corriger (obligatoire). C'est particulièrement important si vous ne mettez pas la note maximale. Si vous ne pouvez pas soumettre votre évaluation (BoutonPoussoir grisé), 
+c'est que vous n'avez pas commenté le code de votre pair.
+
+##########################################################################################################################################################################################################################
+
+Feu Tricolore pour les véhicules:
+
+- Une LED verte sur la broche 10
+- Une LED orange sur la broche 11
+- Une LED rouge sur la broche 12
+
+Feu Bicolore pour les piétons:
+
+- Une LED verte sur la broche 8
+- Une LED rouge sur la broche 9 
+
+au vue du schéma proposé j'ai calculé la valeur des résistances grace au code couleurs
+
+- Les resistances de couleurs : Rouge, Orange Marron, Argent : 230 Ohms
+- Les resistances de couleurs : Marron, Noir, Orange, Argent : 10 000 Ohms
+- Le Bouton poussoir branché sur la broche 2 sur 5V
+
+*/
+
+// Initialisation des differentes constantes du Feu Tricolore pour les véhicules:
+
+const int LedVerteVehicule  = 10;  // initialisation de la constante LedVerteVehicule
+const int LedOrangeVehicule = 11;  // initialisation de la constante LedOrangeVehicule
+const int LedRougeVehicule  = 12;  // initialisation de la constante LedRougeVehicule
+
+// Initialisation des differentes constantes du Feu Bicolore pour les piétons :
+
+const int LedVertePieton = 8;
+const int LedRougePieton = 9;
+
+
+const int BoutonPoussoir = 2;        // Affectation du Bouton Poussoir à la broche 2 
+
+int StatusBoutonPoussoir = 0;        // Initialisation du Status du Bouton Poussoir
+
+void setup() {
+
+ pinMode(LedRougeVehicule, OUTPUT);  // indique que la broche de la LedRougeVehicule est une sortie
+ pinMode(LedOrangeVehicule, OUTPUT); // indique que la broche de la LedOrangeVehicule est une sortie
+ pinMode(LedVerteVehicule, OUTPUT);  // indique que la broche de la LedVerteVehicule est une sortie
+
+ pinMode(LedRougePieton, OUTPUT);    // indique que la broche de la LedRougePieton est une sortie
+ pinMode(LedVertePieton, OUTPUT);    // indique que la broche de la LedVertePieton est une sortie
+
+ pinMode(BoutonPoussoir, INPUT);     // indique que la broche du Bouton Poussoir BoutonPoussoir est une entrée
+}
+
+// Traitement en boucle
+void loop() {
+
+ digitalWrite(LedRougePieton, HIGH);   // la led rouge du feu bicolore est allumé
+ digitalWrite(LedVerteVehicule, HIGH); // La led verte du feu tricolore s'allume
+ delay(3000);                
+ digitalWrite(LedVerteVehicule, LOW);  // La led verte du feu tricolore s'éteind après 3 secondes
+
+
+ StatusBoutonPoussoir = digitalRead(BoutonPoussoir); // l'état du BoutonPoussoir stocké dans StatusBoutonPoussoir
+
+
+ if (StatusBoutonPoussoir == HIGH) {       // Ici on teste si le Bouton poussoir est appuyé
+   digitalWrite(LedOrangeVehicule, HIGH);  // La led Orange du feu tricolore est allumé pendant 1 seconde
+   delay(1000);
+   digitalWrite(LedOrangeVehicule, LOW);   
+
+   digitalWrite(LedRougeVehicule, HIGH);   // La led Rouge du feu Tricolore s'allume 
+
+   
+   digitalWrite(LedRougePieton, LOW);      // La led rouge du feu bicolore s'éteind 
+   digitalWrite(LedVertePieton, HIGH);     // La led verte du feu bicolore s'allume pendant 5 secondes
+
+   delay(5000);
+
+   digitalWrite(LedRougePieton, HIGH);     // Puis la led rouge du feu bicolore s'allume
+   digitalWrite(LedVertePieton, LOW);      // Et la led verte du feu bicolore s'éteind
+
+   digitalWrite(LedRougeVehicule, LOW);    // La led rouge du feu tricolore s'éteind 
+ }
+ else {                                    // Sinon les leds du feu tricolore fonctionne de la façon suivante
+   
+   digitalWrite(LedOrangeVehicule, HIGH);  // La led orange du feu tricolore s'allume 1 seconde puis s'éteind
+   delay(1000);
+   digitalWrite(LedOrangeVehicule, LOW);
+
+   digitalWrite(LedRougeVehicule, HIGH);   // La led rouge du feu tricolore s'allume 3 secondes puis s'éteind
+   delay(3000);
+   digitalWrite(LedRougeVehicule, LOW);
+ }
+}
