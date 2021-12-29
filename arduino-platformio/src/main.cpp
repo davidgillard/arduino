@@ -1,3 +1,4 @@
+
 /*
   fichier : fun-mooc-Blink.cpp
   auteur : David GILLARD
@@ -16,15 +17,15 @@ fonctionner le projet Blink pour ce faire :
 
 #include <Arduino.h>
 
-void someFunction(int num);
+int led=13
 
 void setup () {
-    someFunction(13);
+    pinMode(led, OUTPUT);
 }
 
 void loop() {
+    digitalWrite(led, HIGH);
     delay(5000);
-}
-
-void someFunction(int num) {
+    digitalWirte(led, LOW);
+    delay(5000);
 }
