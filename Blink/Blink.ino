@@ -1,5 +1,5 @@
 /*
-  fichier : fun-mooc-Blink
+  fichier : fun-mooc-Blink.uno
   auteur : David GILLARD
   github: https://github.com/davidgillard
 
