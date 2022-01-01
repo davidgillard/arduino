@@ -13,4 +13,4 @@ tout d'abord merci à MinesTelecom d'avoir mis à disposition sur la plaforme fu
 Objectifs: 
 les tp qui sont proposé dans fun mooc sont revisités avec trois language que sont: l'arduino, le c++ et le go
 
-image::blink.svg[blink,780,390]
+image::blink.png[blink,780,390]
