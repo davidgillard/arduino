@@ -1,3 +1,8 @@
 # arduino
 Découverte d'arduino
+= Titre du document
+Nom de l’auteur <david.gillard@ac-lille.fr>
+v1.0, 2022-01-01
+:toc:
+:imagesdir: images
 image::blink.svg[Interactive,300,opts=interactive]
