@@ -5,6 +5,12 @@ v1.0, 2022-01-01
 :toc:
 :imagesdir: images
 
-== Level 1 introduction
+== Introduction
 
-image::blink.svg[blink,780,390,opts=interactive]
+je viens de découvrir arduino et je retourne un peu dans mon passé d'étudiant
+tout d'abord merci à MinesTelecom d'avoir mis à disposition sur la plaforme fun-mooc le mooc: Programmer un objet avec Arduino.
+
+Objectifs: 
+les tp qui sont proposé dans fun mooc sont revisités avec trois language que sont: l'arduino, le c++ et le go
+
+image::blink.svg[blink,780,390]
