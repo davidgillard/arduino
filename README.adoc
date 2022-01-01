@@ -7,4 +7,4 @@ v1.0, 2022-01-01
 
 == Level 1 introduction
 
-image::blink.svg[Interactive,300,opts=interactive]
+image::blink.svg[blink,780,390,opts=interactive]
