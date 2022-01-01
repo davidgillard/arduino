@@ -4,4 +4,7 @@ David GILLARD <david.gillard@ac-lille.fr>
 v1.0, 2022-01-01
 :toc:
 :imagesdir: images
-images::blink.svg[Interactive,300,opts=interactive]
+
+== Level 1 introduction
+
+image::blink.svg[Interactive,300,opts=interactive]
